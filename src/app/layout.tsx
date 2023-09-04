@@ -1,6 +1,8 @@
-import 'cal-sans'
 import './globals.css'
+
 import type { Metadata } from 'next'
+
+import { headingFont, monoFont, sansFont } from '@/components/fonts'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,7 +15,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html
+      className={`${sansFont.variable} ${headingFont.variable} ${monoFont.variable}`}
+      lang="en"
+    >
       <body>{children}</body>
     </html>
   )
