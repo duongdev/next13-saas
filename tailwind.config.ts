@@ -22,6 +22,10 @@ const config: Config = {
         mono: ['var(--font-mono)', 'monospace'],
         heading: ['var(--font-heading)', 'var(--font-sans)', 'sans-serif'],
       },
+      backgroundColor: {
+        default: 'hsl(var(--background))',
+        subtle: 'var(--subtle)',
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

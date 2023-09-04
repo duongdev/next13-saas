@@ -9,5 +9,7 @@ module.exports = {
   bracketSpacing: true,
   arrowParens: 'always',
   endOfLine: 'lf',
-  proseWrap: 'preserve'
+  proseWrap: 'preserve',
+  plugins: ['prettier-plugin-tailwindcss'],
+  tailwindFunctions: ['clsx', 'cva'],
 }

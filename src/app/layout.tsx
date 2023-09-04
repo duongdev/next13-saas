@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html
-      className={`${sansFont.variable} ${headingFont.variable} ${monoFont.variable}`}
+      className={`${sansFont.variable} ${headingFont.variable} ${monoFont.variable} antialiased`}
       lang="en"
     >
       <body>{children}</body>
