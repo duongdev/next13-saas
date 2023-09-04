@@ -3,10 +3,50 @@
     "next/core-web-vitals",
     "plugin:react-hooks/recommended",
     "plugin:react/recommended",
-    "prettier"
+    "plugin:import/recommended",
+    "plugin:prettier/recommended"
   ],
   "rules": {
+    // common
     "no-unused-vars": "warn",
-    "react/react-in-jsx-scope": "off"
+    "prettier/prettier": "warn",
+    // react
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-sort-props": [
+      "warn",
+      {
+        "shorthandFirst": true,
+        "callbacksLast": true,
+        "multiline": "last",
+        "reservedFirst": ["key"]
+      }
+    ],
+    // import
+    "import/order": [
+      "warn",
+      {
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "newlines-between": "always",
+        "pathGroups": [
+          {
+            "pattern": "{react,react-dom/react,next}{/**,}",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"]
+      }
+    ]
   }
 }
