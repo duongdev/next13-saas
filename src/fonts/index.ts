@@ -1,4 +1,4 @@
-import { Manrope, Poppins } from 'next/font/google'
+import { Manrope } from 'next/font/google'
 import localFont from 'next/font/local'
 
 export const sansFont = Manrope({
@@ -7,11 +7,11 @@ export const sansFont = Manrope({
   variable: '--font-sans',
 })
 
-export const headingFont = Poppins({
-  subsets: ['latin'],
+export const titleFont = localFont({
+  src: './assets/CalSans-SemiBold.otf',
+  variable: '--font-title',
+  weight: '600',
   display: 'swap',
-  variable: '--font-heading',
-  weight: ['400', '500', '600', '700'],
 })
 
 export const monoFont = localFont({

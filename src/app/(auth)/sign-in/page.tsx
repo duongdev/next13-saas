@@ -1,48 +1,69 @@
+import { Metadata } from 'next'
 import Link from 'next/link'
 
+import Zalo from '@/components/icons/zalo'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 
+export const metadata: Metadata = {
+  title: 'Đăng nhập',
+}
+
 export default function SignInPage() {
   return (
     <div className="desktop-transparent grid min-h-screen place-content-center bg-gray-100">
-      <h4 className="mb-4 text-center">Welcome back</h4>
+      <h4 className="font-title mb-4 text-center">Welcome back</h4>
       <div className="w-full min-w-[400px] rounded-lg border bg-default p-4 sm:p-10">
-        <form className="flex flex-col gap-4">
-          <div>
-            <Label className="mb-2 block" htmlFor="email">
-              Email
-            </Label>
-            <Input
-              autoFocus
-              required
-              id="email"
-              placeholder="Email"
-              type="email"
-            />
+        <form className="flex flex-col gap-2">
+          <div className="flex flex-col gap-6">
+            <div>
+              <Label className="mb-2 block" htmlFor="email">
+                Email
+              </Label>
+              <Input
+                autoFocus
+                required
+                id="email"
+                placeholder="Email"
+                type="email"
+              />
+            </div>
+            <div>
+              <div className="flex justify-between gap-2 align-middle">
+                <Label className="mb-2 block" htmlFor="password">
+                  Mật khẩu
+                </Label>
+                <Button asChild size={null} variant="link">
+                  <Link href="./reset-password">Quên mật khẩu?</Link>
+                </Button>
+              </div>
+              <Input
+                required
+                id="password"
+                placeholder="••••••••"
+                type="password"
+              />
+            </div>
           </div>
-          <div>
-            <Label className="mb-2 block" htmlFor="password">
-              Mật khẩu
-            </Label>
-            <Input
-              required
-              id="password"
-              placeholder="••••••••"
-              type="password"
-            />
-          </div>
-          <Button className="mt-4" type="submit">
-            Đăng nhập
+          <Button asChild className="mt-4" type="button">
+            <Link href="/org/withDustin">Đăng nhập</Link>
           </Button>
 
           <Separator className="my-4" />
 
-          <Button variant="outline">Đăng nhập bằng Google</Button>
-          <Button className="bg-blue-600 hover:bg-blue-500" variant="default">
-            Đăng nhập bằng Zalo
+          <Button className="align-center flex" type="button" variant="outline">
+            <span>Đăng nhập bằng</span>{' '}
+            <span className="font-title ml-1.5 text-base">Google</span>
+          </Button>
+          <Button
+            className="bg-blue-600 hover:bg-blue-500"
+            type="button"
+            variant="default"
+          >
+            Đăng nhập bằng
+            <Zalo className="ml-1.5 h-8" />
           </Button>
         </form>
       </div>

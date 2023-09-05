@@ -2,7 +2,7 @@ import './globals.css'
 
 import type { Metadata } from 'next'
 
-import { headingFont, monoFont, sansFont } from '@/components/fonts'
+import { titleFont, monoFont, sansFont } from '@/fonts'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html
-      className={`${sansFont.variable} ${headingFont.variable} ${monoFont.variable} antialiased`}
+      className={`${sansFont.variable} ${titleFont.variable} ${monoFont.variable} antialiased`}
       lang="en"
     >
       <body>{children}</body>
