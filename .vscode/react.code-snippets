@@ -1,0 +1,54 @@
+{
+  "React functional component": {
+    "scope": "typescriptreact",
+    "prefix": "rfc",
+    "body": [
+      "import type { FC } from 'react'",
+      "",
+      "export type ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}Props = {}",
+      "",
+      "const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}: FC<${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}Props> = () => {",
+      "  return <$3>${4:$TM_FILENAME_BASE}</$3>",
+      "}",
+      "",
+      "export default ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}",
+      ""
+    ],
+    "description": "Creates a React functional component"
+  },
+  "Export react component": {
+    "scope": "typescript",
+    "prefix": "erfc",
+    "body": [
+      "export { default } from './${TM_DIRECTORY/^.+\\/(.*)$/$1/}'",
+      "export * from './${TM_DIRECTORY/^.+\\/(.*)$/$1/}'",
+      ""
+    ]
+  },
+  "Next page": {
+    "scope": "typescriptreact",
+    "prefix": "rpage",
+    "body": [
+      "import type { FC } from 'react'",
+      "",
+      "import { Permission } from '@core/graphql'",
+      "import ForbiddenState from '@core/ui/states/forbidden'",
+      "import { createPage } from '@core/utils/route-guard'",
+      "",
+      "const PERMISSIONS: Permission[] = [Permission.RESTRICTED]",
+      "const DISPLAY_NAME = '${1:${TM_DIRECTORY/^.+\\/(.*)$/${1:/pascalcase}/}}'",
+      "",
+      "export const Route: FC = () => {",
+      "  return <>${1:${TM_DIRECTORY/^.+\\/(.*)$/${1:/pascalcase}/}}</>",
+      "}",
+      "",
+      "const Component = createPage(Route, PERMISSIONS, <ForbiddenState />)",
+      "",
+      "Route.displayName = `\\${DISPLAY_NAME\\}Page`",
+      "Component.displayName = DISPLAY_NAME",
+      "",
+      "export { Component }",
+      ""
+    ]
+  }
+}
