@@ -3,13 +3,15 @@
     "scope": "typescriptreact",
     "prefix": "rfc",
     "body": [
-      "import type { FC } from 'react'",
+      "import { type FC } from 'react'",
       "",
       "export type ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}Props = {}",
       "",
       "const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}: FC<${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}Props> = () => {",
       "  return <$3>${4:$TM_FILENAME_BASE}</$3>",
       "}",
+      "",
+      "${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}.displayName = '${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}'",
       "",
       "export default ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}",
       ""

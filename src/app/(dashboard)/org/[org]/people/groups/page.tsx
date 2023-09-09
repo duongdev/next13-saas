@@ -1,8 +1,10 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import type { FC } from 'react'
 
 import { Plus } from 'lucide-react'
 
+import EmptyState from '@/components/states/empty-state'
 import { Button } from '@/components/ui/button'
 
 export const metadata: Metadata = {
@@ -21,7 +23,26 @@ const Page: FC<UserGroupsPageProps> = () => {
         </Button>
       </div>
 
-      <div className="text-muted-foreground">Chưa có nhóm nào được tạo.</div>
+      <div>
+        <EmptyState
+          title="Hãy bắt đầu bằng cách tạo nhóm"
+          action={
+            <Button asChild>
+              <Link href="./groups/create">
+                <Plus className="mr-1 w-4" />
+                Tạo nhóm
+              </Link>
+            </Button>
+          }
+          description={
+            <div className="text-center">
+              Bạn có thể tạo nhiều nhóm và thêm thành viên vào nhóm.
+              <br />
+              Mỗi nhóm có thể có một số nhiệm vụ cụ thể.
+            </div>
+          }
+        />
+      </div>
     </div>
   )
 }
