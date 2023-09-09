@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 
 export default function SignInPage() {
   return (
-    <div className="desktop-transparent grid min-h-screen place-content-center bg-gray-100">
-      <h4 className="font-title mb-4 text-center">Welcome back</h4>
-      <div className="w-full min-w-[400px] rounded-lg border bg-default p-4 sm:p-10">
+    <div className="desktop-transparent grid min-h-screen place-content-center bg-gray-100 dark:bg-default">
+      <h4 className="mb-4 text-center font-title">Welcome back</h4>
+      <div className="w-full min-w-[400px] rounded-lg border bg-default p-4 dark:bg-gray-950 sm:p-10">
         <form className="flex flex-col gap-2">
           <div className="flex flex-col gap-6">
             <div>
@@ -55,7 +55,7 @@ export default function SignInPage() {
 
           <Button className="align-center flex" type="button" variant="outline">
             <span>Đăng nhập bằng</span>{' '}
-            <span className="font-title ml-1.5 text-base">Google</span>
+            <span className="ml-1.5 font-title text-base">Google</span>
           </Button>
           <Button
             className="bg-blue-600 hover:bg-blue-500"
