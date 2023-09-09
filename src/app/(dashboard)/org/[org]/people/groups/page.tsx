@@ -18,13 +18,16 @@ const Page: FC<UserGroupsPageProps> = () => {
     <div className="w-full px-4 py-4 md:mx-auto md:max-w-5xl md:py-8">
       <div className="mb-4 flex items-center justify-between gap-4 md:mb-8">
         <h1 className="text-4xl font-semibold">Nhóm thành viên</h1>
-        <Button variant="default">
-          <Plus className="mr-1 w-4" /> Thêm nhóm
+        <Button asChild variant="default">
+          <Link href="./groups/create">
+            <Plus className="mr-1 w-4" /> Thêm nhóm
+          </Link>
         </Button>
       </div>
 
       <div>
         <EmptyState
+          image="/assets/illustrations/creative-work.svg"
           title="Hãy bắt đầu bằng cách tạo nhóm"
           action={
             <Button asChild>

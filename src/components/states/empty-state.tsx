@@ -4,8 +4,6 @@ import { cn } from '@/lib/utils'
 
 import BlurImage from '../ui/blur-image'
 
-import img from './assets/cute-dog-with-a-bone.svg'
-
 export type EmptyStateProps = {
   title?: ReactNode
   description?: ReactNode
@@ -17,7 +15,7 @@ export type EmptyStateProps = {
 const EmptyState: FC<EmptyStateProps> = ({
   title,
   description,
-  image = img,
+  image = '/assets/illustrations/cute-dog-with-a-bone.svg',
   action,
   className,
 }) => {
@@ -25,10 +23,11 @@ const EmptyState: FC<EmptyStateProps> = ({
     <div className={cn('flex flex-col items-center gap-4', className)}>
       {!!image && (
         <BlurImage
+          priority
           alt="Cute dog with a bone"
           className="h-auto w-80"
           height={400}
-          src={image ?? img}
+          src={image}
           width={400}
         />
       )}
