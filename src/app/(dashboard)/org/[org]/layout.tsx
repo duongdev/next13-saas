@@ -14,7 +14,7 @@ export default async function OrgLayout({
   params: { org: string }
 }) {
   return (
-    <div className="flex min-h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden">
       <SidebarNav
         menus={await getOrgNavMenu(params.org)}
         orgProfile={
@@ -28,7 +28,7 @@ export default async function OrgLayout({
           </Suspense>
         }
       />
-      <div className="flex min-h-screen flex-1 flex-col">
+      <div className="flex min-h-screen flex-1 flex-col overflow-auto">
         <div className="flex-1">{children}</div>
 
         <div className="w-full px-4 py-2 text-center text-sm font-medium text-muted-foreground md:mx-auto md:max-w-5xl md:py-4">

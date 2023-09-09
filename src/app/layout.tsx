@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html
       suppressHydrationWarning
-      className={`${sansFont.variable} ${titleFont.variable} ${monoFont.variable} antialiased`}
+      className={`${sansFont.variable} ${titleFont.variable} ${monoFont.variable} overflow-hidden antialiased`}
       lang="vi"
     >
       <body>

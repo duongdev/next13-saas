@@ -15,13 +15,17 @@ export type CreateGroupFormProps = {
 const CreateGroupForm: FC<CreateGroupFormProps> = ({ permissions }) => {
   return (
     <PeopleGroupForm permissions={permissions} onSubmit={console.log}>
-      {(form) => (
+      {({ fields }) => (
         <>
           <PageHeader
-            action={<Button type="submit">Tạo nhóm</Button>}
             title="Thêm nhóm thành viên"
+            action={
+              <Button className="font-title" type="submit">
+                Tạo nhóm
+              </Button>
+            }
           />
-          {form}
+          {fields}
         </>
       )}
     </PeopleGroupForm>

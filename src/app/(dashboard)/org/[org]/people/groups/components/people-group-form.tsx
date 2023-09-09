@@ -43,7 +43,7 @@ export type PeopleGroupFormValues = z.infer<typeof formSchema>
 export type PeopleGroupFormProps = {
   defaultValues?: Partial<PeopleGroupFormValues>
   onSubmit: (values: PeopleGroupFormValues) => void | Promise<void>
-  children: (form: ReactNode) => ReactNode
+  children: (props: { fields: ReactNode }) => ReactNode
   permissions: Record<string, OrgPermission>
 }
 /* eslint-enable no-unused-vars */
@@ -66,53 +66,56 @@ const PeopleGroupForm: FC<PeopleGroupFormProps> = ({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        {children(
-          <div className="flex flex-col gap-6 lg:gap-8">
-            <ContentGroup title="Thông tin nhóm">
-              <div className="flex flex-1 flex-col gap-3 lg:gap-6">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Tên nhóm</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          placeholder="VD: Marketing, Nhân sự, Kỹ thuật viên, ..."
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="description"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Mô tả</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          {...field}
-                          placeholder="Mô tả sơ lược về nhóm thành viên"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-            </ContentGroup>
+        {children({
+          fields: (
+            <div className="flex flex-col gap-6 lg:gap-8">
+              <ContentGroup title="Thông tin nhóm">
+                <div className="flex flex-1 flex-col gap-3 lg:gap-6">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Tên nhóm</FormLabel>
+                        <FormControl>
+                          <Input
+                            autoFocus
+                            {...field}
+                            placeholder="VD: Marketing, Nhân sự, Kỹ thuật viên, ..."
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="description"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Mô tả</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            {...field}
+                            placeholder="Mô tả sơ lược về nhóm thành viên"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              </ContentGroup>
 
-            <ContentGroup
-              subtitle="Chọn các quyền mà nhóm thành viên này có thể thực hiện"
-              title="Phân quyền"
-            >
-              <OrgPermissionsField permissions={permissions} />
-            </ContentGroup>
-          </div>,
-        )}
+              <ContentGroup
+                subtitle="Chọn các quyền mà nhóm thành viên này có thể thực hiện"
+                title="Phân quyền"
+              >
+                <OrgPermissionsField permissions={permissions} />
+              </ContentGroup>
+            </div>
+          ),
+        })}
       </form>
     </Form>
   )

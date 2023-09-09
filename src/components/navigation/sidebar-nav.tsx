@@ -14,12 +14,12 @@ export default function SidebarNav({
   menus = [],
 }: SidebarNavProps) {
   return (
-    <div className="z-10 w-60 border-r p-2">
+    <div className="z-10 flex w-60 flex-col gap-3 overflow-hidden border-r p-2">
       <div className="flex items-center justify-between gap-4">
         {orgProfile}
         {userProfile}
       </div>
-      <div className="mt-4">
+      <div className="flex-1 overflow-auto">
         <div className="flex flex-col gap-2">
           {menus.map((menu, idx) => (
             <NavMenu {...menu} key={idx} />
