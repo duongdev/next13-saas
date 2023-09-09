@@ -6,6 +6,8 @@ import { Plus } from 'lucide-react'
 
 import EmptyState from '@/components/states/empty-state'
 import { Button } from '@/components/ui/button'
+import { Container } from '@/components/ui/container'
+import { PageHeader } from '@/components/ui/page-header'
 
 export const metadata: Metadata = {
   title: 'Nhóm thành viên',
@@ -15,15 +17,17 @@ export type UserGroupsPageProps = {}
 
 const Page: FC<UserGroupsPageProps> = () => {
   return (
-    <div className="w-full px-4 py-4 md:mx-auto md:max-w-5xl md:py-8">
-      <div className="mb-4 flex items-center justify-between gap-4 md:mb-8">
-        <h1 className="text-4xl font-semibold">Nhóm thành viên</h1>
-        <Button asChild variant="default">
-          <Link href="./groups/create">
-            <Plus className="mr-1 w-4" /> Thêm nhóm
-          </Link>
-        </Button>
-      </div>
+    <Container>
+      <PageHeader
+        title="Nhóm thành viên"
+        action={
+          <Button asChild variant="default">
+            <Link href="./groups/create">
+              <Plus className="mr-1 w-4" /> Thêm nhóm
+            </Link>
+          </Button>
+        }
+      />
 
       <div>
         <EmptyState
@@ -46,7 +50,7 @@ const Page: FC<UserGroupsPageProps> = () => {
           }
         />
       </div>
-    </div>
+    </Container>
   )
 }
 
