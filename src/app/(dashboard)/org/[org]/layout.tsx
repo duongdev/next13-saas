@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 
 import SidebarNav from '@/components/navigation/sidebar-nav'
-import { getOrgNavMenu } from '@/lib/fetchers/org-nav'
+import { getOrgNavMenu } from '@/lib/services/org'
 
 import OrgProfile from './components/org-profile'
 import UserProfile from './components/user-profile'

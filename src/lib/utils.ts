@@ -5,6 +5,10 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+export async function sleep(ms: number = 1000) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
 export const getBlurDataURL = async (url: string | null) => {
   if (!url) {
     return 'data:image/webp;base64,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='

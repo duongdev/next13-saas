@@ -8,7 +8,13 @@
   ],
   "rules": {
     // common
-    "no-unused-vars": "warn",
+    "no-unused-vars": [
+      "warn",
+      {
+        "varsIgnorePattern": "^_",
+        "argsIgnorePattern": "^_"
+      }
+    ],
     "prettier/prettier": "warn",
     // react
     "react/react-in-jsx-scope": "off",
