@@ -24,19 +24,18 @@ export default function OrgLayout({
           {
             label: 'Thành viên',
             icon: 'User',
-            // href: `./${params.org}/users`,
             items: [
               {
                 label: 'Danh sách thành viên',
-                href: `/org/${params.org}/members`,
+                href: `/org/${params.org}/people`,
               },
               {
                 label: 'Quản lý nhóm',
-                href: `/org/${params.org}/members/groups`,
+                href: `/org/${params.org}/people/groups`,
               },
               {
                 label: 'Cài đặt',
-                href: `/org/${params.org}/members/settings`,
+                href: `/org/${params.org}/people/settings`,
               },
             ],
           },
