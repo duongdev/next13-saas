@@ -19,7 +19,7 @@ export default function OrgProfile() {
           className="flex items-center gap-2 overflow-hidden p-1"
           variant="ghost"
         >
-          <div className="font-title grid h-6 w-6 flex-shrink-0 place-items-center rounded-md bg-red-300 p-0.5 text-xs">
+          <div className="grid h-6 w-6 flex-shrink-0 place-items-center rounded-md bg-red-300 p-0.5 font-title text-xs">
             WD
           </div>
           <div className="truncate">withDustin</div>
@@ -31,7 +31,7 @@ export default function OrgProfile() {
         </DropdownMenuLabel>
         <DropdownMenuItem>
           <div className="flex w-full items-center gap-2">
-            <div className="font-title grid h-6 w-6 shrink-0 place-items-center rounded-md bg-red-300 p-0.5 text-xs">
+            <div className="grid h-6 w-6 shrink-0 place-items-center rounded-md bg-red-300 p-0.5 font-title text-xs">
               WD
             </div>
             <div className="flex-1 truncate">withDustin</div>
@@ -40,7 +40,7 @@ export default function OrgProfile() {
         </DropdownMenuItem>
         <DropdownMenuItem>
           <div className="flex w-full items-center gap-2">
-            <div className="font-title grid h-6 w-6 shrink-0 place-items-center rounded-md bg-teal-600 p-0.5 text-[0.65rem] text-primary-foreground">
+            <div className="grid h-6 w-6 shrink-0 place-items-center rounded-md bg-teal-600 p-0.5 font-title text-[0.65rem] text-primary-foreground">
               TLM
             </div>
             <div className="flex-1 truncate">Thích Làm Mộc</div>
@@ -52,7 +52,7 @@ export default function OrgProfile() {
         </DropdownMenuLabel>
         <DropdownMenuItem>
           <div className="flex w-full items-center gap-2">
-            <div className="font-title grid h-6 w-6 shrink-0 place-items-center rounded-md bg-red-500 p-0.5 text-[0.65rem] text-primary-foreground">
+            <div className="grid h-6 w-6 shrink-0 place-items-center rounded-md bg-red-500 p-0.5 font-title text-[0.65rem] text-primary-foreground">
               CSP
             </div>
             <div className="flex-1 truncate">CoderSchool Platform</div>

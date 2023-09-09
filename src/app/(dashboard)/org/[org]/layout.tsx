@@ -22,21 +22,21 @@ export default function OrgLayout({
             href: `/org/${params.org}`,
           },
           {
-            label: 'Người dùng',
+            label: 'Thành viên',
             icon: 'User',
             // href: `./${params.org}/users`,
             items: [
               {
-                label: 'Danh sách người dùng',
-                href: `/org/${params.org}/users`,
+                label: 'Danh sách thành viên',
+                href: `/org/${params.org}/members`,
               },
               {
                 label: 'Quản lý nhóm',
-                href: `/org/${params.org}/users/groups`,
+                href: `/org/${params.org}/members/groups`,
               },
               {
                 label: 'Cài đặt',
-                href: `/org/${params.org}/users/settings`,
+                href: `/org/${params.org}/members/settings`,
               },
             ],
           },

@@ -47,7 +47,7 @@ const NavMenu: FC<NavMenuProps> = ({ label, href, icon, items }) => {
       >
         {icon && (
           <LazyLucidIcon
-            className="w-4 text-slate-600"
+            className="w-4 text-slate-600 dark:text-slate-300"
             name={icon}
             strokeWidth={3}
           />

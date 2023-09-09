@@ -2,6 +2,7 @@ import './globals.css'
 
 import type { Metadata } from 'next'
 
+import { ThemeProvider } from '@/components/theme-provider'
 import { titleFont, monoFont, sansFont } from '@/fonts'
 
 export const metadata: Metadata = {
@@ -16,10 +17,15 @@ export default function RootLayout({
 }) {
   return (
     <html
+      suppressHydrationWarning
       className={`${sansFont.variable} ${titleFont.variable} ${monoFont.variable} antialiased`}
-      lang="en"
+      lang="vi"
     >
-      <body>{children}</body>
+      <body>
+        <ThemeProvider enableSystem attribute="class" defaultTheme="system">
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
