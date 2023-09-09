@@ -25,7 +25,7 @@ const EmptyState: FC<EmptyStateProps> = ({
         <BlurImage
           priority
           alt="Cute dog with a bone"
-          className="h-auto w-80"
+          className="h-auto w-80 dark:invert"
           height={400}
           src={image}
           width={400}

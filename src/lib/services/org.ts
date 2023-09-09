@@ -34,6 +34,10 @@ export async function getOrgNavMenu(org: string): Promise<NavMenuProps[]> {
           label: 'Thông tin tổ chức',
         },
         {
+          label: 'Quản lý nhãn',
+          href: `/org/${org}/settings/labels`,
+        },
+        {
           label: 'Cài đặt chức năng',
           items: [
             {

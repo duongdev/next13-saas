@@ -22,7 +22,7 @@ const Page: FC<UserGroupsPageProps> = () => {
         title="Nhóm thành viên"
         action={
           <Button asChild variant="default">
-            <Link href="./groups/create">
+            <Link prefetch href="./groups/create">
               <Plus className="mr-1 w-4" /> Thêm nhóm
             </Link>
           </Button>
@@ -35,7 +35,7 @@ const Page: FC<UserGroupsPageProps> = () => {
           title="Hãy bắt đầu bằng cách tạo nhóm"
           action={
             <Button asChild>
-              <Link href="./groups/create">
+              <Link prefetch href="./groups/create">
                 <Plus className="mr-1 w-4" />
                 Tạo nhóm
               </Link>
