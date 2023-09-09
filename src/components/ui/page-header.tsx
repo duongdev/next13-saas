@@ -14,7 +14,7 @@ const PageHeader = React.forwardRef<HTMLDivElement, PageHeaderProps>(
       <div
         ref={ref}
         className={cn(
-          'mb-4 flex items-center justify-between gap-4 md:mb-8',
+          'mb-4 flex flex-wrap items-center justify-between gap-4 md:mb-8',
           className,
         )}
         {...props}
