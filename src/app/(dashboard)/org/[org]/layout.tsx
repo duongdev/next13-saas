@@ -1,11 +1,12 @@
 import { Suspense } from 'react'
 
 import SidebarNav from '@/components/navigation/sidebar-nav'
+import { getOrgNavMenu } from '@/lib/fetchers/org-nav'
 
 import OrgProfile from './components/org-profile'
 import UserProfile from './components/user-profile'
 
-export default function OrgLayout({
+export default async function OrgLayout({
   children,
   params,
 }: {
@@ -15,71 +16,7 @@ export default function OrgLayout({
   return (
     <div className="flex min-h-screen overflow-hidden">
       <SidebarNav
-        menus={[
-          {
-            label: 'Dashboard',
-            icon: 'Home',
-            href: `/org/${params.org}`,
-          },
-          {
-            label: 'Thành viên',
-            icon: 'User',
-            items: [
-              {
-                label: 'Danh sách thành viên',
-                href: `/org/${params.org}/people`,
-              },
-              {
-                label: 'Quản lý nhóm',
-                href: `/org/${params.org}/people/groups`,
-              },
-              {
-                label: 'Cài đặt',
-                href: `/org/${params.org}/people/settings`,
-              },
-            ],
-          },
-          {
-            label: 'Quản lý tổ chức',
-            icon: 'Building2',
-            items: [
-              {
-                label: 'Thông tin tổ chức',
-              },
-              {
-                label: 'Cài đặt chức năng',
-                items: [
-                  {
-                    label: 'Quản lý khách hàng',
-                  },
-                  {
-                    label: 'Đặt lịch dịch vụ',
-                  },
-                  {
-                    label: 'Quản lý tồn kho',
-                  },
-                  {
-                    label: 'Thương mại điện tử',
-                  },
-                  {
-                    label: 'Xây dựng website',
-                  },
-                ],
-              },
-              {
-                label: 'Tích hợp',
-                items: [
-                  {
-                    label: 'Sapo',
-                  },
-                  {
-                    label: 'Zalo',
-                  },
-                ],
-              },
-            ],
-          },
-        ]}
+        menus={await getOrgNavMenu(params.org)}
         orgProfile={
           <Suspense>
             <OrgProfile />

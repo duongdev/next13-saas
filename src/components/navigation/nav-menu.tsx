@@ -18,20 +18,28 @@ export type NavMenuProps = {
   icon?: IconName
   href?: string
   items?: NavMenuProps[]
+  matchChildren?: string[]
 }
 
-const NavMenu: FC<NavMenuProps> = ({ label, href, icon, items }) => {
+const NavMenu: FC<NavMenuProps> = ({
+  label,
+  href,
+  icon,
+  items,
+  matchChildren,
+}) => {
   const pathname = usePathname().replace(/\/$/, '')
   const Cmp = useMemo(() => (href ? Link : 'div'), [href])
 
   const isActive = useMemo(() => {
     if (!href) return false
-    if (pathname === href) return true
+    if (href === pathname) return true
+    if (matchChildren?.includes(pathname)) return true
     return false
-  }, [href, pathname])
+  }, [href, matchChildren, pathname])
 
   const [isExpanded, setIsExpanded] = useState(
-    !!items?.find((item) => item.href === pathname),
+    getDefaultExpanded(items ?? [], pathname),
   )
 
   const menuItem = useMemo(() => {
@@ -90,6 +98,18 @@ const NavMenu: FC<NavMenuProps> = ({ label, href, icon, items }) => {
       </AccordionItem>
     </Accordion>
   )
+}
+
+// Recursively check if any of the items or its children matches the pathname
+const getDefaultExpanded = (items: NavMenuProps[], pathname: string) => {
+  if (!items) return false
+  if (items.find((item) => item.href === pathname)) return true
+  if (items.find((item) => item.matchChildren?.includes(pathname))) return true
+
+  if (items.find((item) => getDefaultExpanded(item.items ?? [], pathname)))
+    return true
+
+  return false
 }
 
 export default NavMenu
