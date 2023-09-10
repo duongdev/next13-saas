@@ -12,6 +12,7 @@ import { Button } from './button'
 export interface PageHeaderProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title' | 'children'> {
   title: React.ReactNode
+  subtitle?: React.ReactNode
   action?: React.ReactNode
   withBackButton?:
     | true
@@ -22,7 +23,7 @@ export interface PageHeaderProps
 }
 
 const PageHeader = React.forwardRef<HTMLDivElement, PageHeaderProps>(
-  ({ className, title, action, withBackButton, ...props }, ref) => {
+  ({ className, title, subtitle, action, withBackButton, ...props }, ref) => {
     const { back } = useRouter()
 
     const backButton = React.useMemo(() => {
@@ -70,12 +71,17 @@ const PageHeader = React.forwardRef<HTMLDivElement, PageHeaderProps>(
         <div
           ref={ref}
           className={cn(
-            'mb-4 flex flex-wrap items-center justify-between gap-4 md:mb-8',
+            'mb-4 flex flex-wrap items-start justify-between gap-4 md:mb-8',
             className,
           )}
           {...props}
         >
-          <h1 className="text-4xl font-semibold">{title}</h1>
+          <div>
+            <h1 className="text-4xl font-semibold">{title}</h1>
+            {subtitle && (
+              <p className="mt-1 text-muted-foreground">{subtitle}</p>
+            )}
+          </div>
           <div>{action}</div>
         </div>
       </>

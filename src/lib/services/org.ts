@@ -31,7 +31,8 @@ export async function getOrgNavMenu(org: string): Promise<NavMenuProps[]> {
       icon: 'Building2',
       items: [
         {
-          label: 'Thông tin tổ chức',
+          label: 'Cài đặt tổ chức',
+          href: `/org/${org}/settings/general`,
         },
         {
           label: 'Quản lý nhãn',
