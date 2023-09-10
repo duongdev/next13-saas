@@ -24,6 +24,10 @@ const CreateGroupForm: FC<CreateGroupFormProps> = ({ permissions }) => {
                 Tạo nhóm
               </Button>
             }
+            withBackButton={{
+              href: './',
+              label: 'Danh sách nhóm',
+            }}
           />
           {fields}
         </>
