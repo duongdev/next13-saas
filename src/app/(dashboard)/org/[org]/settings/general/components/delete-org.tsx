@@ -75,9 +75,7 @@ const DeleteOrg: FC<DeleteOrgProps> = () => {
     <AlertDialog open={open} onOpenChange={setOpen}>
       <Form {...form}>
         <AlertDialogTrigger asChild>
-          <Button className="font-title" variant="destructive">
-            Xoá tổ chức
-          </Button>
+          <Button variant="destructive">Xoá tổ chức</Button>
         </AlertDialogTrigger>
 
         <AlertDialogContent>
@@ -145,7 +143,6 @@ const DeleteOrg: FC<DeleteOrgProps> = () => {
                 Huỷ
               </AlertDialogCancel>
               <Button
-                className="font-title"
                 loading={form.formState.isSubmitting}
                 type="submit"
                 variant="destructive"

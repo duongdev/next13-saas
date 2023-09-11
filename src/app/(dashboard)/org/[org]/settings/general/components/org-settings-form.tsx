@@ -106,7 +106,6 @@ const OrgSettingsForm: FC<OrgSettingsFormProps> = ({ defaultValues }) => {
           />
           <div className="lg:mt-2">
             <Button
-              className="font-title"
               loading={form.formState.isSubmitting}
               type="submit"
               disabled={

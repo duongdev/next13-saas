@@ -18,12 +18,8 @@ const CreateGroupForm: FC<CreateGroupFormProps> = ({ permissions }) => {
       {({ fields }) => (
         <>
           <PageHeader
+            action={<Button type="submit">Tạo nhóm</Button>}
             title="Thêm nhóm thành viên"
-            action={
-              <Button className="font-title" type="submit">
-                Tạo nhóm
-              </Button>
-            }
             withBackButton={{
               href: './',
               label: 'Danh sách nhóm',
