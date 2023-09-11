@@ -40,3 +40,7 @@ export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   session: { strategy: 'jwt' },
 }
+
+export const authErrors = {
+  Verification: 'Liên kết không hợp lệ hoặc đã hết hạn. Vui lòng thử lại.',
+} as Record<string, string>

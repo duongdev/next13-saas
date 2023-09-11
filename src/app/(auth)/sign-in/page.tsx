@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 import Zalo from '@/components/icons/zalo'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
+import { authErrors } from '@/lib/auth'
 import { getMetadata } from '@/lib/metadata'
 
 import EmailForm from './email-form'
@@ -16,10 +17,10 @@ export default function SignInPage() {
   return (
     <div className="desktop-transparent grid min-h-screen place-content-center bg-gray-100 p-4 dark:bg-default sm:p-0">
       <h4 className="mb-4 text-center font-title">Welcome back</h4>
-      <div className="w-full min-w-[400px] rounded-lg border bg-default p-4 dark:bg-gray-950 sm:p-10">
+      <div className="w-[440px] max-w-full rounded-lg border bg-default p-4 dark:bg-gray-950 sm:p-10">
         <div className="flex flex-col gap-2">
           <Suspense fallback={<div>Loading...</div>}>
-            <EmailForm />
+            <EmailForm authErrors={authErrors} />
           </Suspense>
 
           <Separator className="my-4" />

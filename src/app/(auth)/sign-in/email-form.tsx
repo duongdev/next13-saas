@@ -3,12 +3,11 @@ import { useSearchParams } from 'next/navigation'
 import { type FC } from 'react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { AlertCircle } from 'lucide-react'
 import { signIn } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -20,7 +19,9 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 
-export type EmailFormProps = {}
+export type EmailFormProps = {
+  authErrors: Record<string, string>
+}
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Email không hợp lệ' }).optional(),
@@ -28,7 +29,7 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>
 
-const EmailForm: FC<EmailFormProps> = () => {
+const EmailForm: FC<EmailFormProps> = ({ authErrors }) => {
   const searchParams = useSearchParams()
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -37,8 +38,12 @@ const EmailForm: FC<EmailFormProps> = () => {
     },
   })
   const isSubmitting = form.formState.isSubmitting
+  const errorParam = searchParams.get('error')
   const rootErrorMessage =
-    form.formState.errors.root?.message ?? searchParams.get('error')
+    form.formState.errors.root?.message ||
+    (errorParam &&
+      (authErrors[errorParam] ||
+        'Đăng nhập không thành công. Vui lòng thử lại.'))
 
   const handleSignIn = async ({ email }: FormValues) => {
     const { error } =
@@ -78,9 +83,9 @@ const EmailForm: FC<EmailFormProps> = () => {
 
           {rootErrorMessage && (
             <Alert variant="destructive">
-              <AlertCircle className="h-4 w-4" />
-              <AlertTitle>Có lỗi xảy ra</AlertTitle>
-              <AlertDescription>{rootErrorMessage}</AlertDescription>
+              <AlertDescription className="text-sm">
+                {rootErrorMessage}
+              </AlertDescription>
             </Alert>
           )}
 
