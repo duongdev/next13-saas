@@ -1,6 +1,7 @@
 'use client'
 import { Check } from 'lucide-react'
 
+import SignOut from '@/components/sign-out'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -68,7 +69,9 @@ export default function OrgProfile() {
 
         <DropdownMenuItem>Tạo hoặc tham gia tổ chức mới</DropdownMenuItem>
         <DropdownMenuItem>Thêm tài khoản</DropdownMenuItem>
-        <DropdownMenuItem>Đăng xuất</DropdownMenuItem>
+        <SignOut>
+          <DropdownMenuItem>Đăng xuất</DropdownMenuItem>
+        </SignOut>
       </DropdownMenuContent>
     </DropdownMenu>
   )

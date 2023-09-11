@@ -1,63 +1,40 @@
-import { Metadata } from 'next'
 import Link from 'next/link'
+import { Suspense } from 'react'
 
 import Zalo from '@/components/icons/zalo'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
+import { getMetadata } from '@/lib/metadata'
 
-export const metadata: Metadata = {
+import EmailForm from './email-form'
+
+export const metadata = getMetadata({
   title: 'Đăng nhập',
-}
+})
 
 export default function SignInPage() {
   return (
-    <div className="desktop-transparent grid min-h-screen place-content-center bg-gray-100 dark:bg-default">
+    <div className="desktop-transparent grid min-h-screen place-content-center bg-gray-100 p-4 dark:bg-default sm:p-0">
       <h4 className="mb-4 text-center font-title">Welcome back</h4>
       <div className="w-full min-w-[400px] rounded-lg border bg-default p-4 dark:bg-gray-950 sm:p-10">
-        <form className="flex flex-col gap-2">
-          <div className="flex flex-col gap-6">
-            <div>
-              <Label className="mb-2 block" htmlFor="email">
-                Email
-              </Label>
-              <Input
-                autoFocus
-                required
-                id="email"
-                placeholder="Email"
-                type="email"
-              />
-            </div>
-            <div>
-              <div className="flex justify-between gap-2 align-middle">
-                <Label className="mb-2 block" htmlFor="password">
-                  Mật khẩu
-                </Label>
-                <Button asChild size={null} variant="link">
-                  <Link href="./reset-password">Quên mật khẩu?</Link>
-                </Button>
-              </div>
-              <Input
-                required
-                id="password"
-                placeholder="••••••••"
-                type="password"
-              />
-            </div>
-          </div>
-          <Button asChild className="mt-4" type="button">
-            <Link href="/org/withDustin">Đăng nhập</Link>
-          </Button>
+        <div className="flex flex-col gap-2">
+          <Suspense fallback={<div>Loading...</div>}>
+            <EmailForm />
+          </Suspense>
 
           <Separator className="my-4" />
 
-          <Button className="align-center flex" type="button" variant="outline">
+          <Button
+            disabled
+            className="align-center flex"
+            type="button"
+            variant="outline"
+          >
             <span>Đăng nhập bằng</span>{' '}
             <span className="ml-1.5 font-title text-base">Google</span>
           </Button>
           <Button
+            disabled
             className="bg-blue-600 hover:bg-blue-500"
             type="button"
             variant="default"
@@ -65,7 +42,7 @@ export default function SignInPage() {
             Đăng nhập bằng
             <Zalo className="ml-1.5 h-8" />
           </Button>
-        </form>
+        </div>
       </div>
       <Button asChild className="mt-2 text-muted-foreground" variant="link">
         <Link href="./sign-up">Chưa có tài khoản?</Link>
