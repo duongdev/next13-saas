@@ -2,9 +2,9 @@ import './globals.css'
 
 import type { Metadata } from 'next'
 
-import { ThemeProvider } from '@/components/theme-provider'
-import { Toaster } from '@/components/ui/toaster'
 import { titleFont, monoFont, sansFont } from '@/fonts'
+
+import Providers from './providers'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -23,12 +23,7 @@ export default function RootLayout({
       lang="vi"
     >
       <body>
-        <ThemeProvider enableSystem attribute="class" defaultTheme="system">
-          <main>
-            {children}
-            <Toaster />
-          </main>
-        </ThemeProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

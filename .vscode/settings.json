@@ -1,7 +1,14 @@
 {
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/.next": true,
+  },
   "cSpell.words": [
     "clsx",
-    "Lucide"
+    "Lucide",
+    "nextauth"
   ],
   "tailwind-fold.foldStyle": "QUOTES",
   "tailwind-fold.unfoldIfLineSelected": true
