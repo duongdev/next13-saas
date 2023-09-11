@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { type FC } from 'react'
+import { Suspense, type FC } from 'react'
 
 import { Container } from '@/components/ui/container'
 import { ContentGroup } from '@/components/ui/content-group'
@@ -32,7 +32,9 @@ const OrgGeneralSettingsPage: FC<OrgGeneralSettingsPageProps> = () => {
         </ContentGroup>
 
         <ContentGroup title="Thông tin chung">
-          <OrgSettingsForm />
+          <Suspense fallback={null}>
+            <OrgSettingsForm />
+          </Suspense>
         </ContentGroup>
 
         <ContentGroup title="Xoá tổ chức">

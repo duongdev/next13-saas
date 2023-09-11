@@ -9,7 +9,6 @@ import {
   AlertDialog,
   AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
@@ -89,16 +88,16 @@ const DeleteOrg: FC<DeleteOrgProps> = () => {
             <AlertDialogHeader>
               <AlertDialogTitle>Xác nhận yêu cầu xoá tổ chức</AlertDialogTitle>
             </AlertDialogHeader>
-            <AlertDialogDescription>
-              <p>
+            <div className="text-sm text-muted-foreground">
+              <div>
                 Nếu bạn chắc chắn về việc xoá tổ chức <b>Slay with Dustin</b>{' '}
                 này, vui lòng tiếp tục bên dưới.
-              </p>
-              <p className="mt-2">
+              </div>
+              <div className="mt-2">
                 Tất cả dữ liệu của tổ chức sẽ bị xoá hoàn toàn và không thể khôi
                 phục.
-              </p>
-            </AlertDialogDescription>
+              </div>
+            </div>
 
             <FormField
               control={form.control}
@@ -121,7 +120,7 @@ const DeleteOrg: FC<DeleteOrgProps> = () => {
               control={form.control}
               name="acknowledged"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md bg-destructive/10 p-4">
+                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md bg-destructive/5 p-4">
                   <FormControl>
                     <Checkbox
                       checked={field.value}
