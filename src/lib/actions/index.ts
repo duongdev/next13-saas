@@ -40,7 +40,7 @@ export function action<
   },
   handler: (_args: {
     values: Values
-    session: Session
+    session: Session | null
     $session: NonNullable<Session>
   }) => Promise<ActionResponse<Data, Values>>,
 ) {
