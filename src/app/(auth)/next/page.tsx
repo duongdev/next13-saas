@@ -27,7 +27,7 @@ const OrgPage: FC<OrgPageProps> = async ({ searchParams: { email } }) => {
   }
 
   if (session.orgMemberships.length === 1) {
-    return redirect(`/dashboard/org/${session.orgMemberships[0].org.name}`)
+    return redirect(`/org/${session.orgMemberships[0].org.namespace}`)
   }
 
   return <OrgList orgMemberships={session.orgMemberships} />

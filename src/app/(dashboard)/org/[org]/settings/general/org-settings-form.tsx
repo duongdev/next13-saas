@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useToast } from '@/components/ui/use-toast'
+import { useCurrentOrgMembership } from '@/lib/hooks/use-current-org-membership'
 import { sleep } from '@/lib/utils'
 
 const schema = z.object({
@@ -44,11 +45,13 @@ export type OrgSettingsFormProps = {
 
 const OrgSettingsForm: FC<OrgSettingsFormProps> = ({ defaultValues }) => {
   const { toast } = useToast()
+  const orgMembership = useCurrentOrgMembership()
+
   const form = useForm<OrgSettingsFormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
-      name: 'Slay with Dustin',
-      namespace: 'withDustin',
+      name: orgMembership?.org.name || '',
+      namespace: orgMembership?.org.namespace || '',
       ...defaultValues,
     },
   })

@@ -13,10 +13,10 @@ export function useCurrentOrgMembership() {
 
   const { orgMemberships } = session
 
-  const currentOrg = orgMemberships.find(
+  const currentOrgMembership = orgMemberships.find(
     (membership) =>
       membership.orgId === orgIdOrNS || membership.org.namespace === orgIdOrNS,
   )
 
-  return currentOrg || null
+  return currentOrgMembership || null
 }

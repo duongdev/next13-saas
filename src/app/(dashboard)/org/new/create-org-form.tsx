@@ -5,6 +5,7 @@ import { useEffect, type FC } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
+import { Alert } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -99,6 +100,11 @@ const CreateOrgForm: FC<CreateOrgFormProps> = () => {
               </FormItem>
             )}
           />
+          {form.formState.errors.root && (
+            <Alert variant="destructive">
+              {form.formState.errors.root.message}
+            </Alert>
+          )}
           <div className="mt-2 lg:mt-0">
             <Button
               loading={form.formState.isSubmitting}

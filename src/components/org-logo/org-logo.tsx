@@ -2,12 +2,13 @@ import { forwardRef } from 'react'
 
 import { cn } from '@/lib/utils'
 
-import { Avatar, AvatarFallback } from './ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 
 export type OrgLogoProps = {
   org: {
     name: string
-    namespace: string
+    namespace?: string | null
+    logoUrl?: string | null
   }
   className?: string
 }
@@ -24,9 +25,10 @@ const getNameFallback = (name: string) => {
 }
 
 const OrgLogo = forwardRef<HTMLDivElement, OrgLogoProps>(
-  ({ org: { name }, className }, ref) => {
+  ({ org: { name, namespace, logoUrl }, className }, ref) => {
     return (
       <Avatar className={cn('rounded-md', className)} ref={ref}>
+        {logoUrl && <AvatarImage alt={namespace || name} src={logoUrl} />}
         <AvatarFallback className="rounded-md bg-slate-600 font-title text-muted dark:bg-slate-100">
           {getNameFallback(name)}
         </AvatarFallback>

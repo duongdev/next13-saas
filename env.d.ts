@@ -8,5 +8,7 @@ namespace NodeJS {
     RESEND_API_KEY: string
     NEXTAUTH_URL: string
     NEXTAUTH_SECRET: string
+    UPLOADTHING_SECRET: string
+    UPLOADTHING_APP_ID: string
   }
 }

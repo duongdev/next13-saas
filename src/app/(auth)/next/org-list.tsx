@@ -8,11 +8,6 @@ import OrgLogo from '@/components/org-logo'
 import EmptyState from '@/components/states/empty-state'
 import { Button } from '@/components/ui/button'
 import { PageHeader } from '@/components/ui/page-header'
-import { getMetadata } from '@/lib/metadata'
-
-export const metadata = getMetadata({
-  title: 'Đang chuyển hướng...',
-})
 
 export type OrgListProps = {
   orgMemberships: (OrgMembership & {

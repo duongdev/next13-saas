@@ -62,11 +62,13 @@ model VerificationToken {
 }
 
 model Org {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  name      String
-  namespace String   @unique
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  name        String
+  namespace   String   @unique
+  logoFileKey String?
+  logoUrl     String?
 
   orgMemberships OrgMembership[]
 }

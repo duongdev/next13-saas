@@ -45,6 +45,8 @@ export const createOrg = action<Org, typeof zCreateOrg>(
         }
       }
 
+      console.error(error)
+
       return {
         errors: {
           root: {

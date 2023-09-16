@@ -53,6 +53,8 @@ CREATE TABLE "Org" (
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "name" TEXT NOT NULL,
     "namespace" TEXT NOT NULL,
+    "logoFileKey" TEXT,
+    "logoUrl" TEXT,
 
     CONSTRAINT "Org_pkey" PRIMARY KEY ("id")
 );

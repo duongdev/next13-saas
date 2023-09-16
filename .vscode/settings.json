@@ -8,7 +8,8 @@
   "cSpell.words": [
     "clsx",
     "Lucide",
-    "nextauth"
+    "nextauth",
+    "uploadthing"
   ],
   "tailwind-fold.foldStyle": "QUOTES",
   "tailwind-fold.unfoldIfLineSelected": true

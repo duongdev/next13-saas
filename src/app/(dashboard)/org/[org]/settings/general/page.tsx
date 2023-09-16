@@ -1,26 +1,27 @@
-import { Metadata } from 'next'
 import { Suspense, type FC } from 'react'
 
 import { Container } from '@/components/ui/container'
 import { ContentGroup } from '@/components/ui/content-group'
 import { PageHeader } from '@/components/ui/page-header'
+import { getMetadata } from '@/lib/metadata'
 
-import DeleteOrg from './components/delete-org'
-import OrgSettingsForm from './components/org-settings-form'
+import DeleteOrg from './delete-org'
+import OrgLogoUpdate from './org-logo-update'
+import OrgSettingsForm from './org-settings-form'
 
-export const metadata: Metadata = {
+export const metadata = getMetadata({
   title: 'Cài đặt tổ chức',
   description: 'Cài đặt thông tin chung của tổ chức',
-}
+})
 
 export type OrgGeneralSettingsPageProps = {}
 
-const OrgGeneralSettingsPage: FC<OrgGeneralSettingsPageProps> = () => {
+const OrgGeneralSettingsPage: FC<OrgGeneralSettingsPageProps> = async () => {
   return (
     <Container>
       <PageHeader
-        subtitle={metadata.description as string}
-        title={metadata.title as string}
+        subtitle="Cài đặt thông tin chung của tổ chức"
+        title="Cài đặt tổ chức"
       />
 
       <div className="flex flex-col gap-5 lg:gap-7">
@@ -28,7 +29,9 @@ const OrgGeneralSettingsPage: FC<OrgGeneralSettingsPageProps> = () => {
           subtitle="Chọn một logo cho tổ chức của bạn. Kích thước khuyến cáo là 256×256px."
           title="Logo"
         >
-          Logo
+          <Suspense>
+            <OrgLogoUpdate />
+          </Suspense>
         </ContentGroup>
 
         <ContentGroup title="Thông tin chung">

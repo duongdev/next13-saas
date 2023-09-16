@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation'
 import { Suspense } from 'react'
 
 import AuthRedirect from '@/components/auth-redirect'
@@ -20,6 +21,14 @@ export default async function OrgLayout({
 
   if (!session?.user) {
     return <AuthRedirect />
+  }
+
+  const currentOrg = session.orgMemberships.find((orgMembership) =>
+    [orgMembership.org.namespace, orgMembership.orgId].includes(params.org),
+  )
+
+  if (!currentOrg) {
+    return redirect('/next')
   }
 
   return (
