@@ -46,10 +46,15 @@ const EmailForm: FC<EmailFormProps> = ({ authErrors }) => {
         'Đăng nhập không thành công. Vui lòng thử lại.'))
 
   const handleSignIn = async ({ email }: FormValues) => {
+    const next = searchParams.get('next')
+    const callbackUrl = next
+      ? `${next}&source=signed_in&provider=email`
+      : `/next?source=signed_in&provider=email`
+
     const { error } =
       (await signIn('email', {
         email,
-        callbackUrl: '/next?source=signed_in&provider=email',
+        callbackUrl,
       })) ?? {}
 
     if (error) {

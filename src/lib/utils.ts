@@ -10,6 +10,14 @@ export async function sleep(ms: number = 1000) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
+export async function devDelay<D = any>(d: D, ms: number = 1000) {
+  if (process.env.NODE_ENV === 'development') {
+    await sleep(ms)
+  }
+
+  return d
+}
+
 export async function getBlurDataURL(url: string | null) {
   if (!url) {
     return 'data:image/webp;base64,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='

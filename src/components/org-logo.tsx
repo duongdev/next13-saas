@@ -27,7 +27,7 @@ const OrgLogo = forwardRef<HTMLDivElement, OrgLogoProps>(
   ({ org: { name }, className }, ref) => {
     return (
       <Avatar className={cn('rounded-md', className)} ref={ref}>
-        <AvatarFallback className="rounded-md bg-slate-600 font-title text-muted">
+        <AvatarFallback className="rounded-md bg-slate-600 font-title text-muted dark:bg-slate-100">
           {getNameFallback(name)}
         </AvatarFallback>
       </Avatar>

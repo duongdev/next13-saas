@@ -6,8 +6,8 @@ export type VerifyRequestPageProps = {}
 
 const VerifyRequestPage: FC<VerifyRequestPageProps> = () => {
   return (
-    <div className="desktop-transparent grid min-h-screen place-content-center bg-gray-100 p-4 dark:bg-default sm:p-0">
-      <div className="w-[95vw] max-w-full rounded-lg border bg-default p-4 dark:bg-gray-950 sm:p-10">
+    <div className="desktop-transparent grid min-h-screen place-content-center p-4 sm:p-0 md:bg-gray-100 md:dark:bg-default">
+      <div className="w-[440px] max-w-[95vw] rounded-lg bg-default p-2 dark:bg-gray-950 sm:p-10 md:border md:p-4">
         <div className="flex flex-col items-center gap-2 text-center">
           <BlurImage
             priority

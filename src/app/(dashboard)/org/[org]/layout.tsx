@@ -1,7 +1,10 @@
 import { Suspense } from 'react'
 
+import AuthRedirect from '@/components/auth-redirect'
 import SidebarNav from '@/components/navigation/sidebar-nav'
+import { getSession } from '@/lib/auth'
 import { getOrgNavMenu } from '@/lib/fetchers/org'
+import { devDelay } from '@/lib/utils'
 
 import OrgProfile from './components/org-profile'
 import UserProfile from './components/user-profile'
@@ -13,13 +16,19 @@ export default async function OrgLayout({
   children: React.ReactNode
   params: { org: string }
 }) {
+  const session = await devDelay(await getSession(), 2000)
+
+  if (!session?.user) {
+    return <AuthRedirect />
+  }
+
   return (
     <div className="flex h-screen overflow-hidden">
       <SidebarNav
         menus={await getOrgNavMenu(params.org)}
         orgProfile={
           <Suspense>
-            <OrgProfile />
+            <OrgProfile session={session} />
           </Suspense>
         }
         userProfile={
@@ -38,3 +47,5 @@ export default async function OrgLayout({
     </div>
   )
 }
+
+OrgLayout.displayName = 'OrgLayout'

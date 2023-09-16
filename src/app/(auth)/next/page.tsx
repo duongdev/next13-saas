@@ -3,6 +3,7 @@ import { type FC } from 'react'
 
 import { getSession } from '@/lib/auth'
 import { getMetadata } from '@/lib/metadata'
+import { devDelay } from '@/lib/utils'
 
 import OrgList from './org-list'
 
@@ -19,7 +20,7 @@ export type OrgPageProps = {
 }
 
 const OrgPage: FC<OrgPageProps> = async ({ searchParams: { email } }) => {
-  const session = await getSession()
+  const session = await devDelay(await getSession())
 
   if (!session?.user) {
     return redirect(`/sign-in?email=${email ?? ''}`)

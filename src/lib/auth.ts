@@ -89,4 +89,4 @@ export async function getSession() {
   }
 }
 
-export type Session = Awaited<ReturnType<typeof getSession>>
+export type Session = NonNullable<Awaited<ReturnType<typeof getSession>>>
