@@ -1,10 +1,14 @@
 import { redirect } from 'next/navigation'
 import { type FC } from 'react'
 
-import { getServerSession } from 'next-auth'
+import { getSession } from '@/lib/auth'
+import { getMetadata } from '@/lib/metadata'
 
-import SignOut from '@/components/sign-out'
-import { Button } from '@/components/ui/button'
+import OrgList from './org-list'
+
+export const metadata = getMetadata({
+  title: 'Chọn tổ chức',
+})
 
 export type OrgPageProps = {
   searchParams: {
@@ -15,20 +19,17 @@ export type OrgPageProps = {
 }
 
 const OrgPage: FC<OrgPageProps> = async ({ searchParams: { email } }) => {
-  const session = await getServerSession()
+  const session = await getSession()
 
   if (!session?.user) {
     return redirect(`/sign-in?email=${email ?? ''}`)
   }
 
-  return (
-    <>
-      Welcome {session?.user?.email}{' '}
-      <SignOut withConfirmation>
-        <Button>Sign Out</Button>
-      </SignOut>
-    </>
-  )
+  if (session.orgMemberships.length === 1) {
+    return redirect(`/dashboard/org/${session.orgMemberships[0].org.name}`)
+  }
+
+  return <OrgList orgMemberships={session.orgMemberships} />
 }
 
 OrgPage.displayName = 'OrgPage'

@@ -4,7 +4,7 @@ import { type FC } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { PageHeader } from '@/components/ui/page-header'
-import { type OrgPermission } from '@/lib/services/org-member-group'
+import { type OrgPermission } from '@/lib/fetchers/org-member-group'
 
 import PeopleGroupForm from '../components/people-group-form'
 

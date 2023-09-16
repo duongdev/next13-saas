@@ -51,7 +51,10 @@ const NavMenu: FC<NavMenuProps> = ({
         )}
         {...(href
           ? { href, role: 'button' }
-          : { href: '', onClick: () => setIsExpanded(!isExpanded) })}
+          : {
+              href: undefined as any,
+              onClick: () => setIsExpanded(!isExpanded),
+            })}
       >
         {icon && (
           <LazyLucidIcon

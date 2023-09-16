@@ -7,13 +7,13 @@
       "",
       "export type ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}Props = {}",
       "",
-      "const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}: FC<${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}Props> = () => {",
+      "const ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}: FC<${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}Props> = () => {",
       "  return <$3>${4:$TM_FILENAME_BASE}</$3>",
       "}",
       "",
-      "${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}.displayName = '${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}'",
+      "${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}.displayName = '${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}'",
       "",
-      "export default ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}",
+      "export default ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}",
       ""
     ],
     "description": "Creates a React functional component"

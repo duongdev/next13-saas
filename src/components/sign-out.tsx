@@ -25,7 +25,7 @@ const SignOut: FC<SignOutProps> = ({ children, withConfirmation }) => {
 
   const handleSignOut = useCallback(() => {
     signOut({
-      callbackUrl: `/sign-in/next?source=signed_out&email=${data?.user?.email}`,
+      callbackUrl: `/next?source=signed_out&email=${data?.user?.email}`,
     })
   }, [data?.user?.email])
 

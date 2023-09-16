@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { Suspense } from 'react'
 
 import Zalo from '@/components/icons/zalo'
@@ -17,7 +16,7 @@ export default function SignInPage() {
   return (
     <div className="desktop-transparent grid min-h-screen place-content-center bg-gray-100 p-4 dark:bg-default sm:p-0">
       <h4 className="mb-4 text-center font-title">Welcome back</h4>
-      <div className="w-[440px] max-w-full rounded-lg border bg-default p-4 dark:bg-gray-950 sm:p-10">
+      <div className="w-[440px] max-w-[95vw] rounded-lg border bg-default p-4 dark:bg-gray-950 sm:p-10">
         <div className="flex flex-col gap-2">
           <Suspense fallback={<div>Loading...</div>}>
             <EmailForm authErrors={authErrors} />
@@ -45,9 +44,6 @@ export default function SignInPage() {
           </Button>
         </div>
       </div>
-      <Button asChild className="mt-2 text-muted-foreground" variant="link">
-        <Link href="./sign-up">Chưa có tài khoản?</Link>
-      </Button>
     </div>
   )
 }

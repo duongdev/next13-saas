@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { type FC } from 'react'
 
 import { Container } from '@/components/ui/container'
-import { getOrgPermissions } from '@/lib/services/org-member-group'
+import { getOrgPermissions } from '@/lib/fetchers/org-member-group'
 
 import CreateGroupForm from './create-group-form'
 

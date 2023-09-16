@@ -31,8 +31,10 @@ const EmptyState: FC<EmptyStateProps> = ({
           width={400}
         />
       )}
-      {title && <h3 className="text-2xl font-semibold">{title}</h3>}
-      {description && <div className="text-gray-500">{description}</div>}
+      {title && <h3 className="text-center text-2xl font-semibold">{title}</h3>}
+      {description && (
+        <div className="text-center text-gray-500">{description}</div>
+      )}
       {action}
     </div>
   )

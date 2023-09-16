@@ -5,9 +5,11 @@ import { Slot } from '@radix-ui/react-slot'
 import {
   Controller,
   ControllerProps,
+  ErrorOption,
   FieldPath,
   FieldValues,
   FormProvider,
+  UseFormSetError,
   useFormContext,
 } from 'react-hook-form'
 
@@ -165,6 +167,28 @@ const FormMessage = React.forwardRef<
 })
 FormMessage.displayName = 'FormMessage'
 
+function setErrors<TFieldValues extends FieldValues>(
+  target:
+    | UseFormSetError<TFieldValues>
+    | { setError: UseFormSetError<TFieldValues> },
+  errors: Partial<
+    Record<FieldPath<TFieldValues> | `root.${string}` | 'root', ErrorOption>
+  >,
+  { shouldFocus = true }: { shouldFocus?: boolean } = {},
+) {
+  const setError = 'setError' in target ? target.setError : target
+
+  for (const [key, value] of Object.entries(errors)) {
+    if (value) {
+      setError(
+        key as FieldPath<TFieldValues> | `root.${string}` | 'root',
+        value,
+        { shouldFocus },
+      )
+    }
+  }
+}
+
 export {
   useFormField,
   Form,
@@ -174,4 +198,5 @@ export {
   FormDescription,
   FormMessage,
   FormField,
+  setErrors,
 }

@@ -49,7 +49,7 @@ const EmailForm: FC<EmailFormProps> = ({ authErrors }) => {
     const { error } =
       (await signIn('email', {
         email,
-        callbackUrl: '/sign-in/next?source=signed_in&provider=email',
+        callbackUrl: '/next?source=signed_in&provider=email',
       })) ?? {}
 
     if (error) {

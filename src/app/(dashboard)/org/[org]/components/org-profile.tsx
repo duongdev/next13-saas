@@ -1,4 +1,6 @@
 'use client'
+import Link from 'next/link'
+
 import { Check } from 'lucide-react'
 
 import SignOut from '@/components/sign-out'
@@ -67,7 +69,11 @@ export default function OrgProfile() {
 
         <Separator className="my-2" />
 
-        <DropdownMenuItem>Tạo hoặc tham gia tổ chức mới</DropdownMenuItem>
+        <Link passHref href="/next">
+          <DropdownMenuItem className="cursor-pointer">
+            Tạo hoặc tham gia tổ chức mới
+          </DropdownMenuItem>
+        </Link>
         <DropdownMenuItem>Thêm tài khoản</DropdownMenuItem>
         <SignOut>
           <DropdownMenuItem>Đăng xuất</DropdownMenuItem>

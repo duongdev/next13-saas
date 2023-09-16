@@ -1,7 +1,7 @@
 import { type FC } from 'react'
 
 import { Checkbox } from '@/components/ui/checkbox'
-import { type OrgPermission } from '@/lib/services/org-member-group'
+import { type OrgPermission } from '@/lib/fetchers/org-member-group'
 
 export type OrgPermissionsFieldProps = {
   permissions: Record<string, OrgPermission>

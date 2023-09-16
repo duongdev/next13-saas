@@ -1,11 +1,17 @@
 import { PrismaAdapter } from '@auth/prisma-adapter'
-import { NextAuthOptions } from 'next-auth'
+import { Org, OrgMembership, User } from '@prisma/client'
+import { NextAuthOptions, getServerSession } from 'next-auth'
 import Email from 'next-auth/providers/email'
 
 import MagicLinkEmail from '@/components/emails/magic-link'
 import prisma from '@/lib/prisma'
 
 import { resend } from './resend'
+
+/** Use to translate next-auth errors */
+export const authErrors = {
+  Verification: 'Liên kết không hợp lệ hoặc đã hết hạn. Vui lòng thử lại.',
+} as Record<string, string>
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -39,8 +45,48 @@ export const authOptions: NextAuthOptions = {
   },
   adapter: PrismaAdapter(prisma),
   session: { strategy: 'jwt' },
+  callbacks: {
+    jwt: async ({ token, user }) => {
+      if (user) {
+        token.user = user
+      }
+
+      return token
+    },
+    session: async ({ session, token }) => {
+      // @ts-expect-error
+      session.user = token.user
+
+      const orgMemberships = await prisma.orgMembership.findMany({
+        where: { userId: token.sub },
+        include: { org: true },
+      })
+
+      // @ts-expect-error
+      session.orgMemberships = orgMemberships
+
+      return session
+    },
+  },
 }
 
-export const authErrors = {
-  Verification: 'Liên kết không hợp lệ hoặc đã hết hạn. Vui lòng thử lại.',
-} as Record<string, string>
+export async function getSession() {
+  const session = await getServerSession(authOptions)
+
+  if (!session) {
+    return null
+  }
+
+  return {
+    ...(session as any),
+    // @ts-expect-error
+    orgMemberships: session.orgMemberships || [],
+  } as {
+    user: User
+    orgMemberships: (OrgMembership & {
+      org: Org
+    })[]
+  }
+}
+
+export type Session = Awaited<ReturnType<typeof getSession>>
